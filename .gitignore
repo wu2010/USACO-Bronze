@@ -1,4 +1,4 @@
-
+*/*.out
 */*.dSYM/Contents/Info.plist
 */*.dSYM/Contents/Resources/DWARF/*
 

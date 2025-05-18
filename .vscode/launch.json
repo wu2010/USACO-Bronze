@@ -7,9 +7,12 @@
       "name": "C/C++: clang++ build and debug active file",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${fileDirname}/${fileBasenameNoExtension}",
+      "program": "${fileDirname}/${fileBasenameNoExtension}.out",
       "args": [],
       "stopAtEntry": false,
+      "customLaunchSetupCommands": [
+        { "text": "target-run", "description": "run target", "ignoreFailures": false }
+      ],
       "cwd": "${fileDirname}",
       "environment": [],
       "externalConsole": false,
