@@ -1,4 +1,4 @@
 */*.out
+*/output.txt
 */*.dSYM/Contents/Info.plist
-*/*.dSYM/Contents/Resources/DWARF/*
-
+*/*.dSYM/Contents/Resources/*
