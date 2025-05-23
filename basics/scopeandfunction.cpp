@@ -33,6 +33,7 @@ void blockScopeExample() {
 int main() {
     cout << "In main, globalVar = " << globalVar << endl;
 
+    // the function-call operator
     localScopeExample();
 
     parameterScopeExample(42);
@@ -46,10 +47,15 @@ int main() {
     // a copy of the argument's value is created and passed to the function. 
     // Modifications made to the parameter inside the function do not affect 
     // the original argument. 
+
     // C++ also supports pass by reference and pass by address (using pointers). 
     // Pass by reference allows a function to modify the original argument, 
     // while pass by address achieves a similar result by passing the memory address 
     // of the argument.
+
+    // the change is local to the function and does not affect the actual 
+    // argument's value unless the actual argument was a reference 
+    // to an object not of type const.
 
     // Example: Pass by value
     int a = 5;

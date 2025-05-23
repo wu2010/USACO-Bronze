@@ -2,6 +2,7 @@
 using namespace std;
 
 int main() {
+
     // For loop: print numbers 0 to 5
     for (int i = 0; i <= 3; ++i) {
         cout << "For loop: " << i << endl;
@@ -27,6 +28,9 @@ int main() {
             cout << "Multiplication: " << a << " * " << b << " = " << a * b << endl;
         }
     }
+
+    // A C++ jump statement performs an immediate local transfer of control.
+    // e.g. break; continue; return [expression];
 
     // Break statement: early stop to exit loop when i is 3
     for (int i = 1; i <= 5; ++i) {

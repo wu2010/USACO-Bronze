@@ -73,5 +73,12 @@ int main() {
     cout << "sum: " << sum << endl;
     cout << "area: " << area << endl;
 
+    // C++ requires constant expressions — expressions that evaluate to 
+    // a constant — for declarations of: Array bounds, Selectors in case statements
+    // Example: Using a constant expression for array size
+    const int SIZE = 5;
+    int arr[SIZE] = {1, 2, 3, 4, 5};
+    cout << "Array of size " << SIZE << ": ";
+
     return 0;
 }

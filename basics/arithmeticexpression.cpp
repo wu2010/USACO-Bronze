@@ -8,6 +8,8 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
+    // The most common expression statements are assignments and function calls. 
+
     // Arithmetic expressions
     int x = 5 + 3; // Addition
     int y = 10 - 4; // Subtraction
