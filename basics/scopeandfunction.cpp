@@ -159,6 +159,8 @@ int main() {
     // Example: Passing 2D array as parameter
     auto print2DArray = [](int arr[][2], int rows) {
         cout << "Inside print2DArray:" << endl;
+        // Statement scope Names declared in a for, if, while, or switch statement 
+        // are visible until the end of the statement block. e.g. i, j
         for (int i = 0; i < rows; ++i) {
             for (int j = 0; j < 2; ++j) cout << arr[i][j] << " ";
             cout << endl;

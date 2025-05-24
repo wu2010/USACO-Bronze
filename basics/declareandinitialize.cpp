@@ -78,7 +78,14 @@ int main() {
     // Example: Using a constant expression for array size
     const int SIZE = 5;
     int arr[SIZE] = {1, 2, 3, 4, 5};
-    cout << "Array of size " << SIZE << ": ";
+    cout << "Array of size " << SIZE << ": " << endl;
+
+    // A reference acts as another name for an existing variable and must be 
+    // initialized to an existing variable at declaration. References are often 
+    // used to avoid copying data or to allow functions to modify arguments.
+    int& ref = y; // ref is a reference to y
+    ref = 20;     // changes y to 20
+    cout << ref << " (y is now " << y << ")" << endl;
 
     return 0;
 }

@@ -10,6 +10,8 @@ Contest are typically 4..5 contiguous hours in length. You can take the contest 
 
 When you submit a program, it will be run against a number of judging test cases and for each one, you will receive feedback, shown in a colored box: green for correct, and red for incorrect. Incorrect submissions are further differentiated by the type of problem: X (incorrect answer), T (time limit exceeded), ! (run-time error or memory limit exceeded), E (empty output file), or M (missing output file). If your program fails to compile, you will be shown the error messages from the compiler. 
 
+## UNIX and language settings
+
 Since this is a UNIX environment, lines in all input/output files are terminated with a single newline "\n", rather than a carriage return plus newline "\r\n"
 
 Note that as of the December 2020 contest, input and output switched from file-based to terminal-based, using standard input and standard output (e.g., cin and cout in C++). The input and output spec of a problem will specify which mode is being used. For C++ users, you may want to add "ios_base::sync_with_stdio(false); cin.tie(0);" to the top of your main method if you are using cin/cout.
