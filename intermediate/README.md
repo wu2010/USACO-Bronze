@@ -44,11 +44,85 @@ The smallest positive number x, such that x + 1.0 is not equal to 1.0.
 
 An "abstract class type," often shortened to "abstract type" or "AST," refers to a class in object-oriented programming that cannot be directly instantiated (created as an object). 
 
+### Example: Defining and Using a Class
+
+```cpp
+#include <iostream>
+#include <string>
+
+class Animal {
+private:
+    std::string name;
+    int age;
+
+public:
+    // Default constructor
+    Animal() : name(""), age(0) {}
+
+    // Destructor
+    ~Animal() {
+        // Cleanup code if needed
+    }
+
+    // Parameterized constructor
+    Animal(const std::string& n, int a) : name(n), age(a) {}
+
+    // Copy constructor
+    Animal(const Animal& other) : name(other.name), age(other.age) {}
+
+    // Copy assignment operator
+    Animal& operator=(const Animal& other) {
+        if (this != &other) {
+            name = other.name;
+            age = other.age;
+        }
+        return *this;
+    }
+
+    // Accessor (getter) functions
+    std::string getName() const { return name; }
+    int getAge() const { return age; }
+
+    // Mutator (setter) functions
+    void setName(const std::string& n) { name = n; }
+    void setAge(int a) { age = a; }
+
+    // Example member function
+    void speak() const {
+        std::cout << name << " says hello!" << std::endl;
+    }
+}
+```
 
 ## Exception Handling
 
 [Exception](https://learn.microsoft.com/en-us/cpp/cpp/errors-and-exception-handling-modern-cpp?view=msvc-170)
 
+### Example: `out_of_range` and `invalid_argument`
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <stdexcept>
+
+int main() {
+    try {
+        std::vector<int> v = {1, 2, 3};
+        // Throws std::out_of_range if index is invalid
+        std::cout << v.at(5) << std::endl;
+    } catch (const std::out_of_range& e) {
+        std::cout << "Out of range error: " << e.what() << std::endl;
+    }
+
+    try {
+        // stoi: string to integer
+        int n = std::stoi("abc"); // Throws std::invalid_argument
+    } catch (const std::invalid_argument& e) {
+        std::cout << "Invalid argument error: " << e.what() << std::endl;
+    }
+    return 0;
+}
+```
 
 ## More on Functions
 
@@ -65,3 +139,4 @@ Arrays: Ordered collections of elements of the same data type, accessed by index
 - bit (bool) -> bitset
 - char -> string
 - floating-point type or integer type -> vector
+
