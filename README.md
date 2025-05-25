@@ -17,3 +17,53 @@ Since this is a UNIX environment, lines in all input/output files are terminated
 Note that as of the December 2020 contest, input and output switched from file-based to terminal-based, using standard input and standard output (e.g., cin and cout in C++). The input and output spec of a problem will specify which mode is being used. For C++ users, you may want to add "ios_base::sync_with_stdio(false); cin.tie(0);" to the top of your main method if you are using cin/cout.
 
 For C/C++ programmers: Programs are compiled with gcc/g++ 7.5.0 using the "-O2" optimization flag and "-lm" to access the math library, and "-std=c++11" or "-std=c++17" to enable support for C++11 or C++17. Ints are 32 bits in size; use a "long long" if you need a 64-bit integer. To read or write a long long variable with C-style I/O (e.g., scanf, printf), use the "%lld" format string.
+
+### Basic Linux Commands for C++
+
+Here are some simple Linux commands useful for C++ programming:
+
+- **Show the current directory:**
+    ```bash
+    pwd
+    ```
+
+- **List files in the current directory:**
+    ```bash
+    ls -l
+    ```
+
+- **Change directory:**
+    ```bash
+    cd foldername
+    cd ../at_parent_level
+    ```
+
+- **Print the contents of a file to the screen:**
+    ```bash
+    more myprogram.cpp
+    ```
+
+- **Run the compiled program:**
+    ```bash
+    ./myprogram
+    ```
+
+If you try to run a program in the current directory with just its name (e.g., myprogram), the shell may not find it unless `.` is in your PATH. That's why you often use `./myprogram` to run executables in the current directory.
+
+- **Check if a file is executable:**
+    ```bash
+    ls -l myprogram
+    ```
+If you see an `x` in the permissions (e.g., `-rwxr-xr-x`), the file is executable. If not, add execute permission with:
+    ```bash
+    chmod +x myprogram
+    ```
+
+### Quitting a Running Program
+
+To quit a running program in the terminal, you can usually press `Ctrl+C`. This sends an interrupt signal (SIGINT) to the program, causing it to terminate.
+
+If you are running a text editor like `vim`:
+- In `vim`, press `Esc`, then type `:q` and press `Enter` to quit (use `:q!` to force quit without saving).
+
+If a program does not respond to `Ctrl+C`, you can find its process ID (PID) using `ps` or `top`, and then use `kill PID` to terminate it.

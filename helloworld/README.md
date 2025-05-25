@@ -1,4 +1,4 @@
-## minimal forms
+## Minimal Forms
 
 All C++ programs must have a main function. If you try to compile a C++ program without a main function, the compiler raises an error.
 
