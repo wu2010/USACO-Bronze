@@ -19,7 +19,7 @@
     - void push_back(const T& value): Appends a copy of value to the end.
     - void push_back(T&& value): Appends a moved value to the end.
     - void pop_back(): Removes the last element, throws if empty.
-    - void reserve(size_t new_cap): Ensures capacity is at least new_cap.
+    - void reserve(size_t new_cap): Ensures capacity is at least new_cap. (if needed, allocates new memory, moves existing elements, and cleans up old memory.)
     - void clear(): Destroys all elements, keeps capacity.
     - size_t size() const: Returns the number of elements.
     - size_t capacity() const: Returns the allocated capacity.
@@ -30,10 +30,6 @@
     - const T& at(size_t idx) const: Const version of at().
     - T* begin(), T* end(): Iterators for range-based for loops.
     - const T* begin() const, const T* end() const: Const iterators.
-
-    Internal Methods:
-    -----------------
-    - void reallocate(size_t new_cap): Allocates new memory, moves existing elements, and cleans up old memory.
 
     Example Usage:
     --------------

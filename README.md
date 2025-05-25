@@ -12,6 +12,15 @@ When you submit a program, it will be run against a number of judging test cases
 
 ## Folder Structure
 
+C++ supports several major programming paradigms:
+
+- **Procedural Programming:** Writing code as a sequence of instructions and procedures (functions). This is the foundation for most beginner-level C++ code.
+- **Object-Oriented Programming (OOP):** Organizing code using classes and objects, encapsulation, inheritance, and polymorphism.
+- **Generic Programming:** Writing algorithms and data structures in a way that works with any data type, primarily using templates.
+- **Functional Programming:** Using functions as first-class objects, lambda expressions, and features like `std::function`, though C++ is not purely functional.
+
+This repository is organized to help you learn C++ through these paradigms, starting from procedural basics and advancing to OOP and generic programming.
+
 - **helloworld/**  
     Contains a minimal C++ program and null statements. How to compile a strict typed C++ program. 
 
