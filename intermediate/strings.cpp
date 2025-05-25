@@ -144,3 +144,9 @@ int main() {
     std::cout << "s2[5]: " << s2[5] << "\n";
     return 0;
 }
+/*
+s1: Hello World
+s2: Hello!
+s1 length: 11
+s2[5]: !
+*/

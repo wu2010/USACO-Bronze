@@ -164,3 +164,6 @@ int main() {
     for (auto x : v) std::cout << x << " ";
     std::cout << std::endl;
 }
+/*
+1 2 3 4 
+*/

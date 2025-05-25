@@ -15,6 +15,7 @@ Group 2 precedence, left to right associativity
 Group 3 precedence, right to left associativity	
 - Object creation (`new`) and destruction (`delete`)
 - Pointer dereference (`*`) and address-of (`&`)
+- One's complement (`~`)
 
 - Bitwise AND (`&`), XOR (`^`), OR (`|`)
 
