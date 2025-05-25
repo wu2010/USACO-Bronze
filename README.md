@@ -55,6 +55,7 @@ If you try to run a program in the current directory with just its name (e.g., m
     ls -l myprogram
     ```
 If you see an `x` in the permissions (e.g., `-rwxr-xr-x`), the file is executable. If not, add execute permission with:
+
     ```bash
     chmod +x myprogram
     ```
