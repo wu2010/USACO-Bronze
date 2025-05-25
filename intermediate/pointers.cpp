@@ -53,8 +53,22 @@ int main() {
     for (int i = 0; i < 5; ++i) {
         std::cout << "uniqueArr[" << i << "] = " << uniqueArr[i] << std::endl;
     }
-
     // unique_ptr automatically deletes the array when it goes out of scope
+
+    // std::unique_ptr automatically deletes the object it owns when the unique_ptr itself
+    // goes out of scope. This is because unique_ptr is a stack variable whose destructor
+    // calls 'delete' on the managed pointer. This ensures proper memory deallocation
+    // without manual intervention, helping to prevent memory leaks.
+    // It is similar in Java that all objects are allocated on the heap using 'new',
+    // and local variables (primitive types and references) are stored on the stack.
+
+    // Example:
+    {
+        std::unique_ptr<int> ptr(new int(42));
+        // When this block ends, ptr's destructor is called,
+        // and the memory for the int is automatically freed.
+    }
+
     return 0;
 }
 /*
