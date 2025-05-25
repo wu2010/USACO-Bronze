@@ -63,20 +63,6 @@ class DemoVector {
     // This allows us to construct, destroy, and allocate memory for T objects.
     std::allocator<T> alloc_;
 
-    // Reallocate memory to a new capacity, moving existing elements
-    // and destroying the old ones.
-    // This function is private to ensure controlled memory management.
-    void reallocate(size_t new_cap) {
-        T* new_data = alloc_.allocate(new_cap);
-        for (size_t i = 0; i < size_; ++i) {
-            alloc_.construct(new_data + i, std::move_if_noexcept(data_[i]));
-            alloc_.destroy(data_ + i);
-        }
-        if (data_) alloc_.deallocate(data_, capacity_);
-        data_ = new_data;
-        capacity_ = new_cap;
-    }
-
 public:
     DemoVector() : data_(nullptr), size_(0), capacity_(0) {}
 
@@ -90,9 +76,20 @@ public:
 
     // Reserve memory for at least new_cap elements.
     void reserve(size_t new_cap) {
-        if (new_cap > capacity_) {
-            reallocate(new_cap);
+        if (new_cap <= capacity_) {
+            return; // No need to reallocate if we already have enough capacity
         }
+
+        // Reallocate memory to a new capacity, moving existing elements
+        // and destroying the old ones.
+        T* new_data = alloc_.allocate(new_cap);
+        for (size_t i = 0; i < size_; ++i) {
+            alloc_.construct(new_data + i, std::move_if_noexcept(data_[i]));
+            alloc_.destroy(data_ + i);
+        }
+        if (data_) alloc_.deallocate(data_, capacity_);
+        data_ = new_data;
+        capacity_ = new_cap;
     }
 
     ~DemoVector() {
@@ -102,7 +99,7 @@ public:
 
     void push_back(const T& value) {
         if (size_ == capacity_) {
-            reallocate(capacity_ == 0 ? 1 : capacity_ * 2);
+            reserve(capacity_ == 0 ? 1 : capacity_ * 2);
         }
         alloc_.construct(data_ + size_, value);
         ++size_;
@@ -112,7 +109,7 @@ public:
     // This allows efficient insertion of rvalue references.
     void push_back(T&& value) {
         if (size_ == capacity_) {
-            reallocate(capacity_ == 0 ? 1 : capacity_ * 2);
+            reserve(capacity_ == 0 ? 1 : capacity_ * 2);
         }
         alloc_.construct(data_ + size_, std::move(value));
         ++size_;

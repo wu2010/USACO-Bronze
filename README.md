@@ -10,6 +10,21 @@ Contest are typically 4..5 contiguous hours in length. You can take the contest 
 
 When you submit a program, it will be run against a number of judging test cases and for each one, you will receive feedback, shown in a colored box: green for correct, and red for incorrect. Incorrect submissions are further differentiated by the type of problem: X (incorrect answer), T (time limit exceeded), ! (run-time error or memory limit exceeded), E (empty output file), or M (missing output file). If your program fails to compile, you will be shown the error messages from the compiler. 
 
+## Folder Structure
+
+- **helloworld/**  
+    Contains a minimal C++ program and null statements. How to compile a strict typed C++ program. 
+
+- **basics/**  
+    Introduces the syntactic foundation for writing procedural C++ programs using Backus-Naur Form (BNF). Includes fundamental programming exercises and examples, covering topics like declarations, expressions (arithmetic, relational, logical), statements (conditionals, loops), and basic data structures for iteration.
+
+- **intermediate/**  
+    Covers abstract class types, object-oriented programming (OOP) concepts, and the use of sequence containers in C++. Includes examples like `bitset`, `string`, and `vector` for managing collections of data. Memory management concepts are also discussed, together with pointers. 
+
+- **advanced/**  
+    Introduces generic programming in C++ where algorithms are written in terms of types to-be-specified-later. It allows writing code that works with various data types without having to rewrite the code for each type. Algorithm design for sorting linear data types.
+
+
 ## UNIX and language settings
 
 Since this is a UNIX environment, lines in all input/output files are terminated with a single newline "\n", rather than a carriage return plus newline "\r\n"
