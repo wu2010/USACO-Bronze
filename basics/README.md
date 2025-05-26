@@ -1,3 +1,10 @@
+# Understanding C++ Grammar, Procedural Programming, and Scoping Rules
+
+A **language grammar** formally defines the syntax rules for constructing valid programs in a programming language. It specifies how symbols, keywords, and structures (like expressions, statements, and functions) can be combined, enabling both humans and computers to understand and process code. Grammars are typically described using notations such as Backus-Naur Form (BNF).
+
+A grammar is often **recursively defined**, meaning some rules are specified in terms of themselves. For example, a rule for a list of statements might allow a statement followed by another list of statements, enabling the grammar to describe sequences of arbitrary length. This recursive structure is essential for expressing the nested and repetitive patterns found in programming languages.
+
+
 ## Relationship to Procedural Programming
 
 The C++ grammar outlined below closely aligns with the principles of procedural programming. Procedural programming is a programming paradigm based on the concept of procedure calls, where programs are organized as sequences of instructions grouped into functions (procedures).
@@ -161,7 +168,7 @@ Here, `<statement>` can be a simple statement or a `<compound-statement>`, enabl
 
 ## Scoping Rules in C++
 
-Scoping rules determine the visibility and lifetime of variables and other identifiers in a C++ program. A *scope* is a region of the program where a name (such as a variable or function) is valid and accessible.
+Scoping rules determine the visibility and lifetime of variables and other identifiers in a C++ program. A *scope* is a region of the program where a name (such as a variable or function) is valid and accessible. The development of scoping rules in programming languages is closely tied to the evolution of language design and compiler theory. **Niklaus Wirth** (Turing Award 1984) explicitly designed languages such as Pascal, Modula, and Oberon with block structure and lexical scoping, making scope rules clear and central to language semantics.
 
 ### Types of Scopes
 

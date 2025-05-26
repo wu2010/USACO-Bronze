@@ -1,3 +1,12 @@
+# C++: an Intro
+
+C++ is a statically typed, compiled, multi-paradigm programming language, with strong emphasis on performance, resource management, and abstraction. Its features include direct memory manipulation, strong type checking, and support for multiple programming paradigms.
+
+C++ was designed by Bjarne Stroustrup, who has been widely recognized for his contributions to programming languages. In 2023, Stroustrup received the ACM A.M. Turing Award, which highlights C++'s significant impact on software engineering, systems programming, and the evolution of modern programming languages.
+
+Learn more: [Bjarne Stroustrup Receives 2023 ACM A.M. Turing Award](https://awards.acm.org/about/2023-turing)
+
+
 ## Minimal Forms
 
 All C++ programs must have a main function. If you try to compile a C++ program without a main function, the compiler raises an error.
@@ -24,6 +33,10 @@ for (int i = 0; i < 5; ++i);
 This loop runs five times but performs no action in its body.
 
 ## Compiled Language
+
+Compiling is a crucial step in software development because it transforms human-readable source code into efficient machine code that computers can execute. This process enables programs to run faster, use resources more effectively, and catch many errors before the software is ever run. 
+
+A central design idea behind compilers is the separation of concerns into distinct phases: parsing source code, analyzing its structure and meaning (syntax and semantics), optimizing the code, and generating efficient machine instructions. This modular approach allows compilers to transform high-level programming languages into fast, reliable executables.
 
 C++ is a compiled language, which means you need to use a compiler to turn your source code into an executable program. Here are some examples of how to compile your code using `g++`:
 
@@ -120,7 +133,9 @@ This creates an executable `myprogram` that uses code from both source files.
 
 ## Typed Language
 
-C++ is a strictly typed language, meaning every variable and expression has a specific type that must be declared and cannot be changed implicitly. This helps catch many errors at compile time, such as assigning a string to an integer variable. For example:
+Type checking is a crucial feature in programming languages like C++. It ensures that operations are performed on compatible data types, helping to catch errors at compile time before the program runs. A strong type system improves program reliability, maintainability, and security by preventing unintended operations, such as assigning a string to an integer variable. The importance of type systems has been recognized in computer science, with Turing Awards given to pioneers like Tony Hoare (1980) for work on formal specification and type safety.
+
+C++ is a strictly typed language, meaning every variable and expression has a specific type that must be declared and cannot be changed implicitly. 
 
 ```cpp
 int x = 5;      // OK
@@ -130,6 +145,8 @@ x = "hello";    // Error: cannot assign a string to an int
 Strict typing in C++ improves program reliability and makes your code easier to understand and maintain.
 
 ### Using `auto` for Type Deduction
+
+Type inference is the ability of a language to automatically deduce the types of expressions without explicit type annotations. Robin Milner received the 1991 Turing Award in part for his work on type inference, specifically the development of the Hindley-Milner type system, which enables powerful type inference in languages like ML and Haskell. 
 
 C++ provides the `auto` keyword to let the compiler automatically deduce the type of a variable from its initializer. This can make your code cleaner and easier to maintain, especially when dealing with complex types.
 
