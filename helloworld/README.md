@@ -1,10 +1,6 @@
 # C++: an Intro
 
-C++ is a statically typed, compiled, multi-paradigm programming language, with strong emphasis on performance, resource management, and abstraction. Its features include direct memory manipulation, strong type checking, and support for multiple programming paradigms.
-
-C++ was designed by Bjarne Stroustrup, who has been widely recognized for his contributions to programming languages. In 2023, Stroustrup received the ACM A.M. Turing Award, which highlights C++'s significant impact on software engineering, systems programming, and the evolution of modern programming languages.
-
-Learn more: [Bjarne Stroustrup Receives 2023 ACM A.M. Turing Award](https://awards.acm.org/about/2023-turing)
+C++ is a statically typed, compiled, multi-paradigm programming language, with strong emphasis on performance, resource management, and abstraction. Its features include direct memory manipulation, strong type checking, and support for multiple programming paradigms. C++ was designed by Bjarne Stroustrup, who is an ACM Fellow. 
 
 
 ## Minimal Forms

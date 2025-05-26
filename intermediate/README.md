@@ -168,7 +168,7 @@ The smallest positive number x, such that x + 1.0 is not equal to 1.0.
 
 [Classes](https://learn.microsoft.com/en-us/cpp/cpp/classes-and-structs-cpp?view=msvc-170)
 
-An "abstract class type," often shortened to "abstract type" or "AST," refers to a class in object-oriented programming that cannot be directly instantiated (created as an object). 
+An "abstract class type," often shortened to "abstract type" or "AST," refers to a class in object-oriented programming that cannot be directly instantiated (created as an object). Liskov was a pioneering force in the development of abstract data types. She recognized the "software crisis" of the 1970s and realized that controlling complexity required modularity, where data and the operations on that data are encapsulated together. This concept is fundamental to OOP.
 
 ### Example: Defining and Using a Class
 

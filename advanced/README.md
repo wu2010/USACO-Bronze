@@ -22,6 +22,20 @@ An algorithm is a step-by-step procedure or formula for solving a problem. In pr
 Generic programming and algorithms often go hand-in-hand, enabling developers to write efficient, reusable, and type-safe code for a wide range of problems.
 
 
+## Proving Correctness of Code
+
+Proving the correctness of code is a foundational concept in computer science, with significant contributions from Turing Award winners such as Tony Hoare (Hoare Logic), Edsger Dijkstra (loop invariants, structured programming), and Robert Floyd (inductive assertions). Their work established formal methods for reasoning about program behavior.
+
+**Key Concepts and Contributors:**
+- **Preconditions & Postconditions:** Introduced by Tony Hoare as part of Hoare Logic, these specify what must be true before and after code execution.
+- **Invariants:** Edsger Dijkstra emphasized the use of invariants, especially within loops, to ensure correctness throughout execution.
+- **Assertions:** Robert Floyd and others formalized the use of assertions to check expected conditions at specific points in code.
+- **Termination:** Both Floyd and Dijkstra contributed to methods for proving that code eventually stops (does not run forever).
+- **Inductive Reasoning:** Used by Floyd and others, mathematical induction is key for proving correctness of recursive algorithms.
+
+These concepts, developed and formalized by leading computer scientists, provide a rigorous framework for verifying that algorithms and programs behave as intended.
+
+
 ## Sorting and Searching
 
 Sorting and searching are fundamental operations in computer science and programming. Efficient algorithms for these tasks are essential for handling large datasets and optimizing performance.
