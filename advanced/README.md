@@ -22,6 +22,25 @@ An algorithm is a step-by-step procedure or formula for solving a problem. In pr
 Generic programming and algorithms often go hand-in-hand, enabling developers to write efficient, reusable, and type-safe code for a wide range of problems.
 
 
+## Functions as First-Class Citizens
+
+In many modern programming languages, functions are treated as first-class citizens. This means functions can be assigned to variables, passed as arguments, returned from other functions, and stored in data structures—just like any other value. This capability enables powerful programming paradigms such as functional programming, callbacks, and higher-order functions.
+
+**Key Points:**
+- **Assignment:** Functions can be stored in variables.
+- **Passing:** Functions can be passed as arguments to other functions.
+- **Returning:** Functions can be returned from other functions.
+- **Storage:** Functions can be stored in data structures like arrays or maps.
+
+The concept of treating functions as first-class citizens is foundational to functional programming and has influenced the design of many languages.
+
+**Turing Award Connection:**  
+John Backus, recipient of the 1977 Turing Award, was recognized for his work on functional programming and the development of languages (like FP) that treat functions as first-class objects. His contributions helped popularize this paradigm and influenced the evolution of programming language design.
+
+
+[Lambda expression](https://learn.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp?view=msvc-170)
+
+
 ## Proving Correctness of Code
 
 Proving the correctness of code is a foundational concept in computer science, with significant contributions from Turing Award winners such as Tony Hoare (Hoare Logic), Edsger Dijkstra (loop invariants, structured programming), and Robert Floyd (inductive assertions). Their work established formal methods for reasoning about program behavior.

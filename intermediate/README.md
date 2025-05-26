@@ -22,7 +22,7 @@ int main() {
 }
 ```
 - `&x` gives the data address of variable `x`.
-- The address of `foo` (e.g., `&foo`) is the instruction address where its code starts.
+- The address of `foo` (i.e., `foo`) is the instruction address where its code starts.
 
 **Virtual Memory and Timing:**  
 In modern systems, both instruction and data addresses are *virtual addresses* managed by the operating system. The OS maps these virtual addresses to physical memory, providing isolation and security for each process.  
@@ -413,10 +413,6 @@ v.at(1) = 10; // modifies the second element
 
 **Summary:**  
 Returning a reference from operators or member functions allows direct modification of the underlying object or element, supports assignment chaining, and avoids unnecessary copying.
-
-
-[Lambda expression](https://learn.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp?view=msvc-170)
-
 
 
 ## More on Data Types
