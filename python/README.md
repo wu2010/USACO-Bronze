@@ -5,7 +5,7 @@ Python is a high-level, dynamically typed, multi-paradigm programming language k
 - **Basic Python Syntax:** Shows the smallest valid Python program and the conventional entry point using `if __name__ == "__main__":`.
 - **Organizing Code:** Explains how to structure Python projects with multiple files and modules.
 - **Python Grammar:** Presents a simplified BNF for Python, highlighting its focus on statements and expressions due to dynamic typing.
-- **Type System Comparison:** Compares stack and heap memory management in Python, Java, and C++, emphasizing Python's automatic memory management.
+- **Memory Management:** Compares stack and heap memory management in Python, Java, and C++, emphasizing Python's automatic memory management.
 - **Abstract Data Types (ADTs):** Describes built-in and custom ADTs in Python, and explains duck typing.
 - **Programming Paradigms:** Outlines Python's support for imperative, procedural, object-oriented, and functional programming, with code examples.
 - **Calling C++ from Python:** Details methods for integrating C++ code with Python (using `ctypes`, `cffi`, `pybind11`, and `Cython`) to improve performance.
