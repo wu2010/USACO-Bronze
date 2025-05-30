@@ -62,6 +62,8 @@ class DemoVector {
 public:
     DemoVector() : data_(nullptr), size_(0), capacity_(0) {}
 
+    // Constructor that takes an initializer list, e.g. DemoVector<int> v = {1, 2, 3};
+    // This allows us to create a DemoVector from a list of elements.
     DemoVector(std::initializer_list<T> ilist)
         : data_(nullptr), size_(0), capacity_(0) {
         reserve(ilist.size());
@@ -147,6 +149,11 @@ public:
     T* end() { return data_ + size_; }
     const T* begin() const { return data_; }
     const T* end() const { return data_ + size_; }
+
+    
+    // in C++17, move semantics are used to transfer ownership of resources without copying.
+    // This allows us to efficiently move elements in and out of the vector. 
+    
 };
 
 // Example usage

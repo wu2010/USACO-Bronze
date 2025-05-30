@@ -5,6 +5,8 @@
 
 // Define a tuple as a vector of strings
 using Tuple = std::vector<std::string>;
+// due to move semantics, we can use std::vector<std::string> directly as a tuple
+// value is not copied, but moved when inserted into a set
 
 // Define a relation as a set of tuples
 using Relation = std::set<Tuple>;

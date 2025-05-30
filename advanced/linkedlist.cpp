@@ -1,5 +1,7 @@
 #include <iostream>
 
+// TODO: use unique_ptr for better memory management
+
 // Node structure for singly linked list
 struct Node {
     int data;
