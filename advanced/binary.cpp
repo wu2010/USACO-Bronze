@@ -61,6 +61,8 @@ int main() {
     cout << num << (isPowerOfTwo ? " is" : " is not") << " a power of two\n";
 
     // Count the number of set bits (Hamming weight)
+    // This is often done using Brian Kernighan's algorithm
+    // Brian Kernighan popularized the "Hello, World!" program
     unsigned int x = 29; // 00011101
     int count = 0;
     for (unsigned int y = x; y; y &= (y - 1)) {

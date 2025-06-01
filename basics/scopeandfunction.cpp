@@ -78,6 +78,8 @@ int main() {
     cout << "After passByReference, a = " << a << ", b = " << b << endl;
 
     // Example: Pass by const reference
+    // C++ allows passing by const reference to avoid copying large objects 
+    // while ensuring they are not modified.
     auto passByConstReference = [](const int& x) {
         cout << "Inside passByConstReference, x = " << x << endl;
         // x++; // Uncommenting this line will cause a compile error
@@ -170,6 +172,7 @@ int main() {
     print2DArray(matrix, 2);
 
     // Example: Using std::array for fixed-size arrays
+    // const reference to avoid copying
     auto printStdArray = [](const std::array<int, 3>& arr) {
         cout << "Inside printStdArray, arr = ";
         for (const auto& elem : arr) cout << elem << " ";
@@ -179,6 +182,7 @@ int main() {
     printStdArray(stdArr);
 
     // Example: Using std::vector for dynamic arrays
+    // const reference to avoid copying
     auto printVector = [](const std::vector<int>& vec) {
         cout << "Inside printVector, vec = ";
         for (const auto& elem : vec) cout << elem << " ";

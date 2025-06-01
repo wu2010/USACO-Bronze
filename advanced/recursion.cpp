@@ -7,10 +7,32 @@ int factorial(int n) {
     return n * factorial(n - 1);
 }
 
+// iterative function to calculate factorial
+int factorial2(int n) {
+    int result = 1;
+    for (int i = 2; i <= n; ++i) {
+        result *= i;
+    }
+    return result;
+}
+
 // Recursive function to calculate nth Fibonacci number
 int fibonacci(int n) {
     if (n <= 1) return n;
     return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// Iterative function to calculate nth Fibonacci number
+int fibonacci2(int n) {
+    if (n <= 1) return n;
+    int a = 0, b = 1, c;
+    // (a, b) -> (b, a + b)
+    for (int i = 2; i <= n; ++i) {
+        c = a + b;
+        a = b;
+        b = c;
+    }
+    return b;
 }
 
 // Recursive function to compute GCD (Euclidean algorithm)
@@ -19,10 +41,31 @@ int gcd(int a, int b) {
     return gcd(b, a % b);
 }
 
+// Iterative function to compute GCD (Euclidean algorithm)
+int gcd2(int a, int b) {
+    // (a, b) -> (b, a % b)
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
 // Recursive function to calculate sum of digits
 int sumOfDigits(int n) {
     if (n == 0) return 0;
     return n % 10 + sumOfDigits(n / 10);
+}
+
+// Iterative function to calculate sum of digits
+int sumOfDigits2(int n) {
+    int sum = 0;
+    while (n > 0) {
+        sum += n % 10;
+        n /= 10;
+    }
+    return sum;
 }
 
 // Recursive function to calculate power (base^exp)
@@ -31,11 +74,28 @@ int power(int base, int exp) {
     return base * power(base, exp - 1);
 }
 
+// Iterative function to calculate power (base^exp)
+int power2(int base, int exp) {
+    int result = 1;
+    while (exp > 0) {
+        result *= base;
+        --exp;
+    }
+    return result;
+}
+
 // Recursive function to reverse a string
 void reverseString(const string& s, int idx) {
     if (idx < 0) return;
     cout << s[idx];
     reverseString(s, idx - 1);
+}
+
+// Iterative function to reverse a string
+void reverseString2(const string& s) {
+    for (int i = s.size() - 1; i >= 0; --i) {
+        cout << s[i];
+    }
 }
 
 int main() {

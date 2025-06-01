@@ -31,6 +31,11 @@ int main() {
     bool result = (a < b) && ((b == 10) || (c == 7));
     cout << "Combined logical expression: " << result << endl; // true (1)
 
+    // leap year example
+    int year = 2020;
+    bool isLeapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+    cout << "Is " << year << " a leap year? " << (isLeapYear ? "Yes" : "No") << endl; // Yes
+
     // Example 6: Greater than or equal to
     cout << "b >= a: " << (b >= a) << endl; // true (1)
     cout << "a >= b: " << (a >= b) << endl; // false (0)
@@ -78,11 +83,11 @@ int main() {
     // Example 13: Using logical expressions in function arguments
     cout << "Max of 5 and 10: " << getMax(5, 10) << endl; // 10
 
-    // Example 15: Using logical expressions in lambda functions
+    // Example 14: Using logical expressions in lambda functions
     auto isEven = [](int num) { return num % 2 == 0; };
     cout << "Is 4 even? " << isEven(4) << endl; // true (1)
 
-    // Example 18: Using logical expressions in file I/O
+    // Example 15: Using logical expressions in file I/O
     ofstream file("output.txt");
     if (file.is_open()) {
         file << "Writing to file" << endl;
