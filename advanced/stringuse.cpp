@@ -92,6 +92,30 @@ int main() {
     std::cout << "Number to string: " << num_str << std::endl;
     std::cout << "Decimal to string: " << decimal_str << std::endl;
 
+    // split string example
+    std::string str = "Hello,World,This,is,a,test";
+    std::stringstream ss(str);
+    std::string token;
+    while (std::getline(ss, token, ',')) {
+        std::cout << "Token: " << token << std::endl;
+    }
+
+    // using whitespace as the default delimiter.
+    std::string word;
+    std::vector<std::string> words;
+    // reset the stringstream with the original string
+    ss.clear();
+    ss.str("Hello World This is a test");
+    // Read words separated by whitespace
+    while (ss >> word) {
+        words.push_back(word);
+    }
+
+    for (const auto& w : words) {
+        std::cout << w << " ";
+    }
+    std::cout << std::endl;
+
     return 0;
 }
 /*
@@ -111,4 +135,11 @@ Converted number: 12345
 Converted decimal: 123.45
 Number to string: 12345
 Decimal to string: 123.450000
+Token: Hello
+Token: World
+Token: This
+Token: is
+Token: a
+Token: test
+Hello World This is a test 
 */
