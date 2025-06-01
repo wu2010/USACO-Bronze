@@ -87,15 +87,13 @@ int main() {
         cows[i].index = i; // Store the original index
     }
 
+    // pay attention to the main diagonal direction
     // Sort cows by x + y (decending), then by x (ascending)
     sort(cows.begin(), cows.end(), [](const cow& a, const cow& b) {
         if (a.x + a.y > b.x + b.y) return true;
         if (a.x + a.y < b.x + b.y) return false;
         return a.x < b.x;
     });
-
-    // verify the sorting
-    for (auto cow : cows) cout << cow.x << ", " << cow.y << ", " << cow.dir << endl;
 
     // cows[0] is infinity for sure, since it has the highest x + y
     int b = cows[0].x + cows[0].y;
@@ -114,22 +112,87 @@ int main() {
     
     // Process each cow
     for (int i = first_index; i < n; i++) {
-        if (cows[i].x + cows[i].y == b) {
-            // If the current cow's position is at the same level as the previous one
-            cout << "the same level" << endl; 
-        } else {
-            // If the current cow's position is worse, it can be blocked by the previous cows
+        if (cows[i].x + cows[i].y < b) {
+            // If the current cow's position is worse, it can be blocked by the previous level
             b = cows[i].x + cows[i].y;
             first_index = i; // Update the index where the level first changes
-            cout << "level was: " << first_index << endl; 
         }
 
+        // Check cows in a different direction
+        char opposite_dir = (cows[i].dir == 'N') ? 'E' : 'N';
         for (int j = 0; j < first_index; j++) {
-            // Check if the current cow can eat grass from the previous cows
-            if (cows[j].infinity) {
-
+            // Check if the current cow can be blocked by the previous cows
+            if (cows[j].dir == opposite_dir) {
+                if (cows[i].dir == 'N' && cows[j].x <= cows[i].x) {
+                    // The cow is blocked by the jth cow
+                    if (cows[j].infinity || cows[j].max_x >= cows[i].x) {
+                        if (cows[i].infinity) {
+                            // If the cow was previously infinite, set it to false
+                            cows[i].infinity = false;
+                            cows[i].grass = cows[j].y - cows[i].y;
+                            cows[i].max_y = cows[j].y; // Update max_y
+                        } else {
+                            int grass_eaten = cows[j].y - cows[i].y;
+                            // Update the grass eaten by the current cow
+                            if (cows[i].grass > grass_eaten) {
+                                cows[i].grass = grass_eaten;
+                                cows[i].max_y = cows[j].y; // Update max_y
+                            }
+                        }
+                    }
+                } else if (cows[i].dir == 'E' && cows[j].y <= cows[i].y) {
+                    // The cow is blocked by the jth cow
+                    if (cows[j].infinity || cows[j].max_y >= cows[i].y) {
+                        if (cows[i].infinity) {
+                            // If the cow was previously infinite, set it to false
+                            cows[i].infinity = false;
+                            cows[i].grass = cows[j].x - cows[i].x;
+                            cows[i].max_x = cows[j].x; // Update max_x
+                        } else {
+                            int grass_eaten = cows[j].x - cows[i].x;
+                            // Update the grass eaten by the current cow
+                            if (cows[i].grass > grass_eaten) {
+                                cows[i].grass = grass_eaten;
+                                cows[i].max_x = cows[j].x; // Update max_x
+                            }
+                        }
+                    }
+                }
+            } else {
+                // If the cow is in the same direction, it can be blocked only if 
+                // it is in the same row or column
+                if (cows[i].dir == 'N' && cows[j].x == cows[i].x) {
+                    // The cow is blocked by the previous cow
+                    cows[i].infinity = false;
+                    int grass_eaten = cows[j].y - cows[i].y;
+                    // Update the grass eaten by the current cow
+                    cows[i].grass = (cows[i].grass == 0)? grass_eaten: 
+                        ((cows[i].grass > grass_eaten)? grass_eaten:cows[i].grass);
+                } else if (cows[i].dir == 'E' && cows[j].y == cows[i].y) {
+                    // The cow is blocked by the previous cow
+                    cows[i].infinity = false;
+                    int grass_eaten = cows[j].x - cows[i].x;
+                    // Update the grass eaten by the current cow
+                    cows[i].grass = (cows[i].grass == 0)? grass_eaten: 
+                        ((cows[i].grass > grass_eaten)? grass_eaten:cows[i].grass);
+                }
             }
         }
         
     }
+
+    // Sort cows by index to maintain the original order
+    sort(cows.begin(), cows.end(), [](const cow& a, const cow& b) {
+        return a.index < b.index;
+    });
+
+    // Output the results
+    for (const auto& c : cows) {
+        if (c.infinity) {
+            cout << "Infinity" << endl;
+        } else {
+            cout << c.grass << endl;
+        }
+    }
+
 }
