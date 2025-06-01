@@ -37,3 +37,36 @@ Every picture containing just a single flower contributes to the count
 (there are four of these in the example). Also, the (i,j) ranges (1,2) and 
 (2,4) in this example correspond to pictures that have an average flower.
 */
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    vector <int> numpetals(n);
+    for (int i = 0; i < n; i++) {
+        cin >> numpetals[i];
+    }
+    
+    int count = 0;
+    // Find all pairs of (i , j) where 1 ≤ i ≤ j ≤ N
+    for (int j = 0; j < n; j++) {
+        for (int i = 0; i <= j; i++) {
+            int sum = 0;
+            for (int m = i; m <= j; m++) {
+                sum += numpetals[m];
+            }
+            int num = j - i + 1;
+            for (int m = i; m <= j; m++) {
+                if (numpetals[m] * num == sum) {
+                    count++;
+                    // Found an average flower, no need to check further
+                    break; 
+                }
+            }
+        }
+    }
+    cout << count << endl;
+}
