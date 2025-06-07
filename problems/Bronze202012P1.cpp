@@ -33,3 +33,32 @@ SCORING:
 - Test cases 2-3 satisfy C≤50.
 - Test cases 4-10 satisfy no additional constraints.
 */
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    const int N = 7; // 2^3 - 1 = 7 numbers
+
+    // Read the seven integers
+    vector<int> nums(N);
+    for (int i = 0; i < N; i++) {
+        cin >> nums[i];
+    }
+
+    // Sort by natural order of integers
+    sort(nums.begin(), nums.end());
+
+    int A = nums[0]; // The smallest number must be A
+    int B = nums[1]; // The second smallest number must be B
+
+    // The largest number nums[N - 1] must be A + B + C
+    int C = nums[N - 1] - A - B; // The largest number minus A and B gives C
+    
+    cout << A << " " << B << " " << C << endl;
+}
