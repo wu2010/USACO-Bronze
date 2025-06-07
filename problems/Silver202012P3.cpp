@@ -18,8 +18,13 @@ Over time, each cow therefore leaves a barren "rut" of empty cells behind her.
 If two cows move onto the same grassy cell in the same move, they share the cell 
 and continue moving in their respective directions in the next hour.
 
-Please determine the amount of grass eaten by each cow. Some cows never stop, 
-and therefore eat an infinite amount of grass.
+Farmer John isn't happy when he sees cows that stop grazing, and he wants to know 
+who to blame for his stopped cows. If cow b stops in a cell that cow a originally 
+ate, then we say that cow a stopped cow b . Moreover, if cow a stopped cow b and 
+cow b stopped cow c , we say that cow a also stopped cow c (that is, the "stopping" 
+relationship is transitive). Each cow is blamed in accordance with the number of 
+cows she stopped. Please compute the amount of blame assigned to each cow -- that is, 
+the number of cows she stopped.
 
 INPUT FORMAT (input arrives from the terminal / stdin):
 
@@ -35,9 +40,8 @@ she would end up in cell (x+1,y).
 
 OUTPUT FORMAT (print output to the terminal / stdout):
 
-Print N lines of output. Line i in the output should describe the number of cells 
-worth of grass that the ith cow in the input eats. If a cow eats an infinite amount 
-of grass, output "Infinity" for that cow.
+Print N lines of output. Line i in the output should describe the blame assigned 
+to the i th cow in the input.
 
 SAMPLE INPUT:
 
@@ -46,17 +50,20 @@ E 3 5
 N 5 3
 E 4 6
 E 10 4
-N 11 2
-N 8 1
+N 11 1
+E 9 2
 
 SAMPLE OUTPUT:
 
-5
-3
-Infinity
-Infinity
+0
+0
+1
 2
-5
+1
+0
+
+In this example, cow 3 stops cow 2, cow 4 stops cow 5, and cow 5 stops cow 6. 
+By transitivity, cow 4 also stops cow 6.
 
 SCORING:
 - In test cases 2-5, all coordinates are at most 100.
@@ -76,6 +83,9 @@ public:
     bool infinity = true; // Initially assume infinite grass
     int grass = 0; // 0 means infinity
     int max_x, max_y; // max position based on direction
+    int stoppedby = -1; // To keep track of the cow that stopped this cow
+
+    int blames = 0; // Number of cows stopped by this cow
 };
 
 int main() {
@@ -130,6 +140,7 @@ int main() {
                             cows[i].infinity = false;
                             cows[i].grass = grass_eaten;
                             cows[i].max_y = cows[j].y - 1; // Update max_y
+                            cows[i].stoppedby = cows[j].index; // Set the cow that stopped this cow
                         }
                     }
                 } else if (cows[i].dir == 'E') {
@@ -141,6 +152,7 @@ int main() {
                             cows[i].infinity = false;
                             cows[i].grass = grass_eaten;
                             cows[i].max_x = cows[j].x - 1; // Update max_x
+                            cows[i].stoppedby = cows[j].index; // Set the cow that stopped this cow
                         }
                     }
                 }
@@ -155,6 +167,7 @@ int main() {
                         cows[i].infinity = false;
                         cows[i].grass = grass_eaten;
                         cows[i].max_y = cows[j].y - 1; // Update max_y
+                        cows[i].stoppedby = cows[j].index; // Set the cow that stopped this cow
                     }
                 } else if (cows[i].dir == 'E' && cows[j].y == cows[i].y) {
                     int grass_eaten = cows[j].x - cows[i].x;
@@ -164,6 +177,7 @@ int main() {
                         cows[i].infinity = false;
                         cows[i].grass = grass_eaten;
                         cows[i].max_x = cows[j].x - 1; // Update max_x
+                        cows[i].stoppedby = cows[j].index; // Set the cow that stopped this cow
                     }
                 }
             }
@@ -176,13 +190,18 @@ int main() {
         return a.index < b.index;
     });
 
-    // Output the results
+    // Now we need to count how many cows were stopped by each cow
     for (const auto& c : cows) {
-        if (c.infinity) {
-            cout << "Infinity" << endl;
-        } else {
-            cout << c.grass << endl;
+        cow c_copy = c; // Create a copy to traverse the chain
+        while (c_copy.stoppedby != -1) {
+            cows[c_copy.stoppedby].blames++; // Increment the blame count for the cow that stopped this cow
+            c_copy = cows[c_copy.stoppedby]; // Move to the next cow in the chain
         }
+    }
+
+    // Output the blame counts for each cow
+    for (const auto& c : cows) {
+        cout << c.blames << endl;
     }
 
 }

@@ -4,7 +4,7 @@ https://usaco.guide/bronze
 Problems:
 https://usaco.org/index.php?page=training
 
-## useful hits
+## useful tips
 
 - 32 bits `int` can handle -2,147,483,648 to 2,147,483,647. i.e. 1e9 is ok
 
@@ -26,6 +26,8 @@ https://usaco.org/index.php?page=training
 
 2020-2021 Season
 - 2025/06/01: https://usaco.org/index.php?page=dec20results
+- 2025/06/08: https://usaco.org/index.php?page=jan21results
+- 2025/06/15: 
 
 
 2021-2022 Season
