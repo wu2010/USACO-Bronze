@@ -22,6 +22,15 @@ https://usaco.org/index.php?page=training
     `Ctrl + a`: Moves the cursor to the beginning of the line.
     `Ctrl + e`: Moves the cursor to the end of the line.
 
+- Run through all tests 1-10 provided with a Bash script
+    ```bash
+    cd ~/Documents/USACO-Bronze/problems
+    g++ -std=c++17 -O2 -lm -o myprogram.out Bronze202012P3.cpp
+
+    # chmod +x verify_results.sh
+    ./verify_results.sh ~/Downloads/prob3_bronze_dec20
+    ```
+
 ## progress log
 
 2020-2021 Season

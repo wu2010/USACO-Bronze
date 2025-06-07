@@ -80,8 +80,8 @@ public:
     char dir;
     int index; // To keep track of the original index
 
-    bool infinity = true; // Initially assume infinite grass
-    int grass = 0; // 0 means infinity
+    // Initially assume infinite grass
+    int grass = -1; // -1 means infinity since at least 1 patch of grass is eaten
     int max_x, max_y; // max position based on direction
     int stoppedby = -1; // To keep track of the cow that stopped this cow
 
@@ -126,63 +126,42 @@ int main() {
             next_index = i; // Update the index where the level first changes
         }
 
-        // Check cows in a different direction
-        char opposite_dir = (cows[i].dir == 'N') ? 'E' : 'N';
+        // only cows that are from the previous level can block th current cow
         for (int j = 0; j < next_index; j++) {
             // Check if the current cow can be blocked by the previous cows
-            if (cows[j].dir == opposite_dir) {
-                if (cows[i].dir == 'N') {
-                    // The cow is blocked by the jth cow
-                    if (cows[j].x <= cows[i].x && (cows[j].infinity || cows[j].max_x >= cows[i].x)) {
-                        int grass_eaten = cows[j].y - cows[i].y;
-                        // Update the grass eaten by the current cow
-                        if (cows[i].grass == 0 || cows[i].grass > grass_eaten) {
-                            cows[i].infinity = false;
-                            cows[i].grass = grass_eaten;
-                            cows[i].max_y = cows[j].y - 1; // Update max_y
-                            cows[i].stoppedby = cows[j].index; // Set the cow that stopped this cow
-                        }
-                    }
-                } else if (cows[i].dir == 'E') {
-                    // The cow is blocked by the jth cow
-                    if (cows[j].y <= cows[i].y && (cows[j].infinity || cows[j].max_y >= cows[i].y)) {
-                        int grass_eaten = cows[j].x - cows[i].x;
-                        // Update the grass eaten by the current cow
-                        if (cows[i].grass == 0 || cows[i].grass > grass_eaten) {
-                            cows[i].infinity = false;
-                            cows[i].grass = grass_eaten;
-                            cows[i].max_x = cows[j].x - 1; // Update max_x
-                            cows[i].stoppedby = cows[j].index; // Set the cow that stopped this cow
-                        }
-                    }
-                }
-            } else {
-                // If the cow is in the same direction, it can be blocked only if 
-                // it is in the same row or column
-                if (cows[i].dir == 'N' && cows[j].x == cows[i].x) {
+            if (cows[i].dir == 'N') {
+                // The cow can be blocked by the jth cow if 
+                // the jth cow is facing East and is to the left of the ith cow
+                // or if the jth cow is facing North and is in the same column
+                if (cows[j].dir == 'E' && cows[j].x <= cows[i].x 
+                        && (cows[j].grass == -1 || cows[j].max_x >= cows[i].x)
+                    || cows[j].dir == 'N' && cows[j].x == cows[i].x) {
                     int grass_eaten = cows[j].y - cows[i].y;
-                    // Update the grass eaten by the current cow if it is blocked
-                    if (cows[i].grass == 0 || cows[i].grass > grass_eaten) {
-                        // The cow is blocked by the previous cow
-                        cows[i].infinity = false;
+                    // only the nearest cow can block the current cow
+                    if (cows[i].grass == -1 || cows[i].grass > grass_eaten) {
                         cows[i].grass = grass_eaten;
-                        cows[i].max_y = cows[j].y - 1; // Update max_y
+                        cows[i].max_y = cows[j].y - 1; // Update max_y that ith cow can reach
                         cows[i].stoppedby = cows[j].index; // Set the cow that stopped this cow
                     }
-                } else if (cows[i].dir == 'E' && cows[j].y == cows[i].y) {
+                }
+            } else if (cows[i].dir == 'E') {
+                // The cow can be blocked by the jth cow if
+                // the jth cow is facing North and is below the ith cow
+                // or if the jth cow is facing East and is in the same row
+                if (cows[j].dir == 'N' && cows[j].y <= cows[i].y 
+                        && (cows[j].grass == -1 || cows[j].max_y >= cows[i].y
+                    || cows[i].dir == 'E' && cows[j].y == cows[i].y)) {
                     int grass_eaten = cows[j].x - cows[i].x;
-                    // Update the grass eaten by the current cow if it is blocked
-                    if (cows[i].grass == 0 || cows[i].grass > grass_eaten) {
-                        // The cow is blocked by the previous cow
-                        cows[i].infinity = false;
+                    // only the nearest cow can block the current cow
+                    if (cows[i].grass == -1 || cows[i].grass > grass_eaten) {
                         cows[i].grass = grass_eaten;
-                        cows[i].max_x = cows[j].x - 1; // Update max_x
+                        cows[i].max_x = cows[j].x - 1; // Update max_x that ith cow can reach
                         cows[i].stoppedby = cows[j].index; // Set the cow that stopped this cow
                     }
                 }
             }
         }
-        
+        // If the cow is still infinite, it means it can move freely
     }
 
     // Sort cows by index to maintain the original order
