@@ -52,3 +52,31 @@ Test cases 6-10 satisfy no additional constraints.
 */
 
 #include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    string cowphabet, heard;
+    cin >> cowphabet >> heard;
+
+    int previndex = -1; // Initialize to an invalid index
+    int humcount = 1; // Start with 1 if no order reversal is needed
+
+    for (char c : heard) {
+        // Find the index of the character in the cowphabet
+        // If the character is not found, it will return string::npos
+        // which is a very large number, so we can safely ignore it
+        // since the problem guarantees that all characters are in the cowphabet
+        int index = cowphabet.find(c);
+        if (index <= previndex) {
+            // one occurrence of order reversal
+            humcount++;
+        }
+        previndex = index;
+    }
+    cout << humcount << endl;
+}

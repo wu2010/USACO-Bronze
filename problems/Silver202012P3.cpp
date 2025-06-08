@@ -1,4 +1,4 @@
-/* USACO 2020 December Contest, Bronze
+/* USACO 2020 December Contest, Silver
 Problem 3. Stuck in a Rut
 
 Farmer John has recently expanded the size of his farm, so from the perspective of his 
