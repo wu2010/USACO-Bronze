@@ -50,3 +50,70 @@ the fourth group, and 17 and 3 in the fifth group.
 
 */
 
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int N, odd_count = 0, even_count = 0;
+    cin >> N;
+
+    for (int i = 0; i < N; ++i) {
+        int cow;
+        cin >> cow;
+        if (cow % 2 == 1) {
+            odd_count++;
+        }
+    }
+    even_count = N - odd_count; // Total cows minus odd cows gives even cows
+
+    // the first group is even
+    if (odd_count == even_count || even_count == odd_count + 1) {
+        // If the difference between odd and even counts is at most 1,
+        // we can form groups with all cows.
+        cout << N << endl;
+        return 0;
+    }
+    
+    // now we have unbalanced odd and even counts. 
+    // odd_count cannot be increased but can be decreased
+    if (odd_count < even_count) {
+        // If there are more even cows, we can merge even groups to balance
+        cout << odd_count + (odd_count + 1) << endl;
+        return 0;
+    }
+
+    // now we have more odd cows than even cows
+
+    /* If there are more odd cows, we can merge odd groups to balance
+    while (odd_count > even_count) {
+        odd_count -= 2; // Merge two odd cows into one group
+        even_count += 1; // This creates one more even group
+    }
+    // since the first group is even, even_count cannot be too much
+    if (odd_count + 2 == even_count) {
+        even_count--; // If we have an extra even group, we can remove it
+    }
+    */
+
+    // odd_count == even_count || even_count == odd_count + 1
+    switch ((odd_count - even_count) % 3) {
+        case 0:
+            // If the difference is a multiple of 3, we can form groups
+            cout << N - (odd_count - even_count) / 3 << endl;
+            break;
+        case 1:
+            // If the difference is 1, we can form one less group
+            // because we can only merge two odd cows into one group
+            cout << N - (odd_count - even_count) / 3 - 2 << endl;
+            break;
+        case 2:
+            // If the difference is 2, we can form one less group
+            cout << N - (odd_count - even_count) / 3 - 1 << endl;
+            break;
+    }
+    
+    return 0;
+}
+
