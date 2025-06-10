@@ -36,12 +36,18 @@ https://usaco.org/index.php?page=training
 2020-2021 Season
 - 2025/06/01: https://usaco.org/index.php?page=dec20results
 - 2025/06/08: https://usaco.org/index.php?page=jan21results
-- 2025/06/15: 
-
+- 2025/06/15: https://usaco.org/index.php?page=feb21results
+- 2025/06/22: https://usaco.org/index.php?page=open21results
 
 2021-2022 Season
+- 2025/06/29: 
+- 2025/07/06:  
+- 2025/07/13:  
+- 2025/07/20: 
 
 2022-2023 Season
+- 2025/07/27: 
+- 2025/08/03: 
 
 2023-2024 Season
 
