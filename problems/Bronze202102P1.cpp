@@ -59,3 +59,57 @@ In the input above,
     Gretta was born 17 years before Bessie.
     Paulina was born 9 years after Bessie.
 */
+
+#include <iostream>
+#include <vector>
+#include <string>
+#include <unordered_map>
+
+using namespace std;
+
+unordered_map<string, int> zodiac_years = {
+    {"Ox", 0}, {"Tiger", 1}, {"Rabbit", 2}, {"Dragon", 3},
+    {"Snake", 4}, {"Horse", 5}, {"Goat", 6}, {"Monkey", 7},
+    {"Rooster", 8}, {"Dog", 9}, {"Pig", 10}, {"Rat", 11}
+};
+
+int main() {
+    int N;
+    cin >> N;
+
+    unordered_map<string, int> birth_years;
+    birth_years["Bessie"] = 0; // Bessie's year is the reference point
+
+    string skip;
+
+    for (int i = 0; i < N; ++i) {
+        string cow1, cow2, direction, zodiac;
+        cin >> cow1 >> skip >> skip >> direction >> zodiac >> skip >> skip >> cow2;
+
+        // Ensure cow2 was mentioned before cow1
+        if (birth_years.count(cow2) == 0) {
+            cerr << "Error: " << cow2 << " must be defined before " << cow1 << endl;
+            return 1; // Exit if cow2 is not defined
+        }
+
+        // Calculate the year difference based on the zodiac and direction
+        // the difference between cow2 and Bessie can be used to infer cow2's year
+        int zodiac_cow2 = birth_years[cow2] % 12; // because Bessie is year 0
+        // we assume cow1 is born after cow2
+        int year_difference = (zodiac_years[zodiac] - zodiac_cow2 + 12) % 12;
+
+        // Adjust year difference based on actual direction
+        if (direction == "previous") {
+            year_difference -= 12; // Go to previous zodiac cycle
+        } else if (year_difference == 0) {
+            year_difference = 12; // If same zodiac, go to next cycle
+        }
+
+        // Update cow1's birth year based on cow2's birth year and the calculated difference
+        birth_years[cow1] = birth_years[cow2] + year_difference;
+    }
+
+    cout << abs(birth_years["Elsie"] - birth_years["Bessie"]) << endl;
+
+    return 0;
+}
