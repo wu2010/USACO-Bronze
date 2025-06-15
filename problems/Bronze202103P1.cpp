@@ -62,3 +62,68 @@ SCORING:
 - Test cases 8-10 satisfy N≤1000.
 - Test cases 11-17 satisfy N≤10^5.
 */
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+bool dsort(int a, int b) {
+    return a > b;
+}
+
+auto isPossible = [] (vector <int> papers) {
+    for (int i = 0; i < papers.size(); i++) {
+        // i + 1 is the position; papers[i] + 1 is citation after review paper
+        if (papers[i] + 1 == i + 1) {
+            return i;
+        } else if (papers[i] + 1 < i + 1) {
+            break; // early stop
+        }
+    }
+    return -1;
+};
+
+auto hIndex = [] (vector <int> papers) {
+    for (int i = 0; i < papers.size(); i++) {
+        // for the first time it falls below i + 1
+        if (papers[i] < i + 1) {
+            // return the position (+1) of the previous paper (-1)
+            return i;
+        }
+    }
+    return -1;
+};
+
+int main() {
+    int N, L;
+    cin >> N >> L;
+    
+    vector <int> papers(N);
+    for (int i = 0; i < N; ++i) {
+        cin >> papers[i];
+    }
+
+    // sort in descending order
+    sort(papers.begin(), papers.end(), dsort);
+
+    int index = isPossible(papers);
+
+    // impossible add h index by 1
+    if (index < 0) {
+        cout << hIndex(papers) << endl;
+        return 0;
+    } 
+    
+    // test whether L is enough to fill the plateau. work backward
+    for (int i = index; i >= 0; --i) {
+        if (papers[index] == papers[i]) {
+            L--;
+        } else {
+            break; // early stop
+        }
+    }
+    // return the position (+1) of index or the previous one
+    cout << ((L >= 0)? index + 1 : index) << endl;
+
+}
